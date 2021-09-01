@@ -5,17 +5,22 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
 import java.sql.Timestamp;
 /**
  * @author AlexanderDementev on 01.09.2021
  */
 @Entity
-public class ToDo {
+@Table(name = "todo")
+public class ToDo implements Serializable {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
+
+    private String description;
 
     private Timestamp created;
 
@@ -32,6 +37,14 @@ public class ToDo {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Timestamp getCreated() {
