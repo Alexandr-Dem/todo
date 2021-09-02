@@ -76,6 +76,7 @@ public class ToDoConfig implements WebMvcConfigurer {
         LocalContainerEntityManagerFactoryBean factory =
                 new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
+        factory.setPackagesToScan("com.alexandrdem.entities");
         factory.setDataSource(dataSource());
         return factory;
     }
